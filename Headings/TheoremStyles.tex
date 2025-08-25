@@ -1,0 +1,104 @@
+%%% Всё описано в документации пакета tcolorbox.
+
+% Создать новый стиль оформления для теорем, определений и примеров
+\newtheoremstyle{theoremdd}% name of the style to be used
+{2pt}          % space above the theorem
+{2pt}          % space below the theorem
+{\normalfont}  % name of font to use in the body of the theorem
+{0pt}          % measure of space to indent
+{\bfseries}    % name of head font
+{.}            % punctuation between head and body
+{ }            % space after theorem head; " " = normal interword space
+{\thmname{#1}\thmnumber{ #2}\thmnote{#3}} % manually specify head
+
+% Использовать новый стиль
+\theoremstyle{theoremdd}
+
+% Создать окружения для теорем и тд
+
+% \newtheorem{NameInLatex}
+% [SharedCounter] % == NameInLatex for other theorem
+% {NameInText}
+% [section|subsection|...] % number of indeces in theorem name
+
+\newtheorem{theorem}{\indent Теорема}
+% \newtheorem{theorem}{\indent Теорема}[section]
+\newtheorem{lemma}[theorem]{\indent Лемма}
+\newtheorem{example}[theorem]{\indent Пример}
+\newtheorem{problem}[theorem]{\indent Задача}
+\newtheorem{remark}[theorem]{\indent Замечание}
+\newtheorem{assumption}[theorem]{\indent Предположение}
+\newtheorem{proposition}[theorem]{\indent Предложение}
+\newtheorem{definition}[theorem]{\indent Определение}
+\newtheorem{corollary}[theorem]{\indent Следствие}
+\newtheorem{claim}[theorem]{\indent Утверждение}
+\newtheorem{algo}[theorem]{\indent Алгоритм}
+
+% Заливка фона теорем
+\tcolorboxenvironment{definition}{
+  breakable,
+  left=6pt,
+  right=6pt,
+  top=2pt,
+  bottom=2pt,
+  colback=gray!7,
+  colframe={black},
+}
+\tcolorboxenvironment{theorem}{
+  breakable,
+  left=6pt,
+  right=6pt,
+  top=2pt,
+  bottom=2pt,
+  colback=gray!7,
+  colframe={black},
+}
+\tcolorboxenvironment{proposition}{
+  breakable,
+  left=6pt,
+  right=6pt,
+  top=2pt,
+  bottom=2pt,
+  colback=gray!7,
+  colframe={black},
+}
+\tcolorboxenvironment{lemma}{
+  breakable,
+  left=6pt,
+  right=6pt,
+  top=2pt,
+  bottom=2pt,
+  colback=gray!7,
+  colframe={black},
+}
+\tcolorboxenvironment{corollary}{
+  breakable,
+  left=6pt,
+  right=6pt,
+  top=2pt,
+  bottom=2pt,
+  colback=gray!7,
+  colframe={black},
+}
+\tcolorboxenvironment{assumption}{
+  breakable,
+  left=6pt,
+  right=6pt,
+  top=2pt,
+  bottom=2pt,
+  colback=gray!7,
+  colframe={black},
+}
+\tcolorboxenvironment{algo}{
+  breakable,
+  left=6pt,
+  right=6pt,
+  top=2pt,
+  bottom=2pt,
+  colback=gray!7,
+  colframe={black},
+}
+
+% Создать новый стиль окружения для доказательств и решений
+\renewenvironment{proof}{\textit{Доказательство.} $\square$}{\hfill$\blacksquare$\\[2pt]}
+\newenvironment{solution}{\textit{Решение.} $\square$}{\hfill$\blacksquare$\\[2pt]}

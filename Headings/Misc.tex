@@ -1,0 +1,529 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Utilities
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%% Simple text %%%%%%%%%%%%%%%%%%
+
+% в тексте << и >> заменяются на кавычки
+% из-за пакета \babel кавычки задаются двумя символами:
+%% "` -- открывающая кавычка
+%% "' -- закрывающая кавычка
+
+% тире: ---
+% тире между подлежащим и сказуемым: "---
+
+% символ "~" или "\ " обозначает дополнительный пробел
+
+% \verb|some text| -- prints text with monospaced font ("|" is delimiter in that case, but any character except "*" can be delimiter)
+
+% Посмотреть значение параметра: \the\parskip
+%% Подробнее: https://tex.stackexchange.com/questions/693280/displaying-values-of-latex-variables
+
+% \section[short title]{full title}
+
+% \appendix
+
+% \pagestyle{empty} -- сделать страницу без колонтитулов
+% \thispagestyle
+
+% \hspace{10pt}, \vspace{10pt}
+% \hskip, \vskip
+% \\, \newline -- перейти на новую строку, не создавая абзаца
+% \linebreak, \pagebreak -- если строки вылезают за границы страницы
+
+% \par == пустая строка -- переход к новому абзацу
+
+% \begin{tabular}{||c|c|||r|l||} -- создание таблицы
+% \hline -- горизонтальная черта
+
+% \includegraphics[width=0.8\textwidth]{Images/cat}
+%% Объяснение:
+%% \textwidth -- константа, встроенная в латех
+%% 0.8 -- числовой множитель
+%% width= -- размер изображения, если оно слишком большое
+
+% \newcommand{\percent}{\mathbin{\%}} -- сделали бинарный оператор с помощью \mathbin (в таком случае правильно расставляются пробелы вокруг оператора)
+
+% \begin{itemize}, \begin{enumerate} -- нумерованные списки
+
+%%% Удобно использовать в доказательстве:
+% \begin{itemize}
+%     \item[$\Leftarrow$]
+%     \item[$\Rightarrow$]
+% \end{itemize}
+
+%%% Document sectioning
+% -1 -- \part{part} -- используется в основном в книгах
+% 0  -- \chapter{chapter} -- используется в основном в книгах
+% 1  -- \section{section} -- используется в статьях
+% 2  -- \subsection{subsection}
+% 3  -- \subsubsection{subsubsection}
+% 4  -- \paragraph{paragraph}
+% 5  -- \subparagraph{subparagraph}
+
+%%%%%%%%%%%%%%%%%% Theorems %%%%%%%%%%%%%%%%%%
+
+% \theoremstyle{plain} -- жирное название, курсивные текст
+% \theoremstyle{definition} -- жирное название, обычный текст
+% \theoremstyle{remark} -- курсивное название, обычный текст
+
+% \newtheorem{theorem}{Теорема}[section] -- в [] указывается счётчик (т.е. нумерация теоремы в section 1 будет 1.1, 1.2 ...)
+% \newtheorem{corollary}{Следствие}[theorem] -- в section 1 после теоремы 1 нумерация будет 1.1.1, 1.1.2, ...
+% \newtheorem{corollary}[theorem]{Следствие} -- в section 1 у теорем и следствий будет один и тот же счётчик (т.е будет теорема 1.1, следствие 1.2, теорема 1.3, ...)
+% \newtheorem*{...}{...} -- без нумерации
+
+% в конце доказательства ставится символ \qedsymbol (по умолчанию - белый квадрат). Этот символ можно  поменять с помощью \renewcommand{\qedsymbol}{new_symbol}
+
+%%%%%%%%%%%%%%%%%% Counters %%%%%%%%%%%%%%%%%%
+
+% \newcounter{name}
+% \newcounter{name}{other_name} -- второй счёичик обнуляется каждый раз, когда инкрементируется первый
+
+% Изменение счётчика
+%% \stepcounter{name}
+%% \addcounter{name}{number}
+%% \setcounter{name}{number}
+
+% обращение к счётчику (и вывод значения на экран)
+%% Пусть \newcounter{name}, тогда:
+%% \arabic{name} -- 0
+%% \Roman{name} -- только положительные
+%% \alph{name} -- буквы латинского алфавита (от 0 до 26)
+
+% \being{enumerate}[label=\Alph*]
+%     \item item A
+%     \setcounter{enumi}{5}
+%     \item another item
+% \end{enumerate}
+
+%%%%%%%%%%%%%%%%%% Environments %%%%%%%%%%%%%%%%%%
+
+% \begin{center} -- центрированный текст
+% \begin{equation} -- мат среда с нумерацией
+% \begin{equation*} -- мат среда без нумерации (тогда эквивалентно \[\])
+% \begin{align} -- можно выбирать, по какому символу ровнять строки. Нумерует каждую строку отдельно
+% \begin{align*} -- аналогично без нумерации
+% \begin{gather} -- выравнивает всё по центру
+% \begin{gather*} -- аналогично без нумерации
+% \begin{multiline} -- ровняет строки, чтобы они находились на одной диагонали
+% \begin{multiline*} -- аналогично без нумерации
+% \begin{aligned} -- для использования внутри математической формулы
+% \begin{cases} -- для систем уравнений
+
+% \newenvironment{name}{preceding_code}{succeeding_code}
+%% Пример
+%% \newenvironment{myenv}
+%% {\begin{center}\bfseries}
+%% {\end{center}}
+
+%%%%%%%%%%%%%%%%%% Math mode %%%%%%%%%%%%%%%%%%
+
+% Виды шрифтов в математическом окружении
+%% \mathbb{} -- для обозначения множеств
+%% \mathbf{} -- жирное начертание (для обозначения вектора)
+%% \mathrm{} -- для операторов
+%% \mathsf{} -- без засечек (для матожа, например)
+%% \mathcal{} -- каллиграфический
+
+% \frac{} -- (fraction) внутри строки (т.е. $$) отрисовывает небольшую дробь, в математическом окружении - полноразмерную
+% \dfrac{} -- (display fraction) всегда отрисовывает полноразмерную дробь
+
+% \xleftrightarrow[below]{above}
+
+% \dot{a}
+% \ddot{a}
+% \mathring{a}
+% \hat{} -- \widehat{}
+% \tilde{} -- \widetilde{}
+% \bar{} -- \overline{}
+% \vec{} -- \overrightarrow{}
+
+% Можно расставлять свою нумерацию с помощью \tag{}
+%% \begin{align*}
+%%     F = \frac{1}{2} \tag{III 3H}
+%% \end{align*}
+
+% \begin{pmatrix}, {bmatrix}, {vmatrix}...
+% NiceMatrix package (\begin{pNiceMatrix}, \begin{pNiceArray}{cc|c})
+
+% \cdots (horizontal)
+% \vdots (vertical)
+% \ddots (diagonal)
+
+%%% Spacing
+% \!      -- -3/18 of \quad (= -3mu)
+% \,      -- 3/18 of \quad (= 3mu)
+% \:      -- 4/18 of \quad (= 4mu)
+% \;      -- 5/18 of \quad (= 5mu)
+% \       -- equivalent of space in normal text
+% \quad   -- space equal to the current font size (= 18 mu)
+% \qquad  -- twice of \quad (= 36 mu)
+
+%%% features
+% \underset{text}{under_text}  --- подпись под текстом
+
+%%%%%%%%%%%%%%%%%% References %%%%%%%%%%%%%%%%%%
+
+% \label{eq:3nl} -- название создаваемой ссылки
+% \ref{eq:3nl} -- обращение к ссылке, созданной \label{}
+% Существуют также:
+%% \eqref{}
+%% \pageref{} -- чтобы прописывался номер страницы
+%% \figref{}
+%% \href{site}{name} -- для гиперссылок
+
+% Пример
+%% \begin{align*}\label{eq:3nl}
+%%     F = \frac{1}{2} \tag{III 3H}
+%% \end{align*}
+
+% \footnote{это сноска \label{fn}} -- сноска
+%% на сноски можно ссылаться: \ref{fn}
+
+% Сокращение для ссылок в зависимости от объекта, на который ссылаемся:
+%% ch: -- chapter
+%% sec: --- section
+%% subsec: --- subsection
+%% fig: --- figure
+%% tab: --- table
+%% eq: --- equation
+%% lst: --- code listing
+
+% Создание ссылки на конерктный текст в документе:
+%% \hypertarget{name}{text} -- чтобы создать ссылку
+%% \hyperlink{name}{local_text} -- чтобы сослаться
+%% Больше про навигацию по документу: https://www.unix-lab.org/posts/hyperref/
+
+%% Цвета ссылок:
+% linkcolor -- цвет гиперссылок внутри документа (по-умолчанию red)
+% pagecolor -- цвет гиперссылок на другие страницы внутри документа (по-умолчанию red)
+% filecolor -- цвет гиперссылок, открывающих локальные файлы (по-умолчанию cyan)
+% anchorcolor -- цвет текста мишени (по-умолчанию black)
+% citecolor -- цвет библиографических ссылок (по-умолчанию green)
+% urlcolor -- цвет гиперссылок на сетевые ресурсы (по-умолчанию magenta)
+
+%%%%%%%%%%%% Подключание файлов %%%%%%%%%%%%%%%%%
+
+% \input{preamble}
+%
+% \begin{document}
+%     \input{titlepage}
+%     \input{chapter1}
+%     \input{chapter2}
+%     \input{chapter3}
+% \end{document}
+
+% \input{} принимает относительный путь от главного файла (который компилируется) - это относится и к вложенным \input{}.
+
+% есть также команды \include{} (переходит на новую строку, не может быть вложенным!) и добавление к ней - \includeonly{name1, name2} (чтобы компилировать только часть)
+
+% Пути, указываемые до файлов, всегда смотрятся относительно самого главного файла (компиляция которого запускается)
+
+%%%%%%%%%%%% Изображения %%%%%%%%%%%%%%%%%
+
+% \usepackage{pdfpages} -- для \includepdf[pages={1,3,5-6}]{filename.tex}
+
+%%%% Man of "minipage" environment (for inserting images)
+% https://latex-tutorial.com/minipage-latex/
+
+%%%% Можно делать рамку вокруг изображения, передавая дополнительный аргумент:
+%% "fbox" -- можно самому настраивать границы и толщину (\fboxsep, \fboxrule)
+% \includegraphics[width=\textwidth,fbox]{path-to-image}
+%% "frame" -- показывает границы изображения:
+% \includegraphics[width=\textwidth,frame]{path-to-image}
+
+
+%%%%%%%%%%%% tikz %%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Оформление страниц
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\AddToHook{cmd/section/before}{\clearpage}  % начинать каждую секцию с новой страницы
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Colors.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\definecolor{linkcolor}{HTML}{50006b} % цвет ссылок
+%\definecolor{urlcolor}{HTML}{107896} % цвет гиперссылок
+\definecolor{urlcolor}{HTML}{50006b} % цвет гиперссылок
+
+\hypersetup{
+  unicode=true,            % русские буквы в разделе PDF
+  colorlinks=true,       	 % Цветные ссылки вместо ссылок в рамках
+  linkcolor=black!10!blue, % Внутренние ссылки
+  citecolor=green,         % Ссылки на библиографию
+  filecolor=magenta,       % Ссылки на файлы
+  urlcolor=cyan,
+  pdfstartview=FitH,
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Enumerate and itemize
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \linespread{1.3}                    % spaces between lines
+\setlength{\parindent}{12pt}        % indentation of first line of the paragraph CHECK itemparindent AFTER CHANGING THAT VALUE
+\setlength{\parskip}{5pt}           % space between paragraphs
+\newcommand\itemparindent{20pt} % indentation of first line of the paragraph CHECK ENUMERATE AFTER CHANGING THAT VALUE
+
+\setlist{nosep}                     % spaces inside "enumerate" and "itemize"
+% \setlist{noitemsep}
+
+%%%%%%%%%%%% Enumerate %%%%%%%%%%%%
+
+\renewcommand{\alph}[1]{\asbuk{#1}} % hack for cyrillic items
+\renewcommand{\Alph}[1]{\Asbuk{#1}} % hack for cyrillic items
+
+\newcommand\customlabelsep{5pt}
+
+\setlist[enumerate]{
+  wide,
+  align=left,
+  left=0pt .. \itemparindent, % <labelindent> .. <leftmargin>
+  itemindent=*,
+  leftmargin=*,
+  labelindent=20pt,
+  listparindent=0pt,
+  labelsep=\customlabelsep,
+  itemsep=\parskip,
+  parsep=\parskip,
+  % topsep=\parskip,
+}
+
+\setlist*[enumerate, 1]{
+  label=\arabic*),
+}
+\setlist*[enumerate, 2]{
+  label=\arabic{enumi}.\arabic*),
+}
+\setlist*[enumerate, 3]{
+  label=\Alph*),
+  % labelwidth=!, % костыль из-за неправильного выравнивания
+}
+
+\setlist*[enumerate, 4]{
+  label=\Roman*),
+  % labelwidth=!, % костыль из-за неправильного выравнивания
+}
+
+%%%%%%%%%%%% Itemize %%%%%%%%%%%%
+
+%%% More items: https://latex-tutorial.com/bullet-styles/
+
+\setlist[itemize]{
+  wide,
+  align=left,
+  left=0pt .. \itemparindent, % <labelindent> .. <leftmargin>
+  itemindent=*,
+  leftmargin=*,
+  labelindent=20pt,
+  listparindent=0pt,
+  labelsep=\customlabelsep,
+  itemsep=\parskip,
+  parsep=\parskip,
+  % topsep=\parskip,
+}
+
+\setlist*[itemize, 1]{
+  label=\ding{117},
+}
+
+\setlist*[itemize, 2]{
+  label=$\bullet$,
+}
+
+\setlist*[itemize, 3]{
+  label=\ding{228},
+  % labelwidth=*, % костыль из-за неправильного выравнивания
+}
+
+\setlist*[itemize, 4]{
+  label=\ding{111},
+  % labelwidth=*, % костыль из-за неправильного выравнивания
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Code snippets.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% https://www.overleaf.com/learn/latex/Code_listing
+
+%%% Some colors for code.
+% mycodestyle
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+% \definecolor{codebackcolour}{rgb}{0.95,0.95,0.92}
+\definecolor{codebackcolour}{RGB}{242,242,242}
+% cpp
+\definecolor{cppbackgroundcolor}{RGB}{255,255,255}
+\definecolor{cppidentifiercolor}{HTML}{000000}
+\definecolor{cppcommentcolor}{HTML}{57C747}
+\definecolor{cppstringcolor}{HTML}{709040}
+\definecolor{cppkeywordcolor}{HTML}{0000FF}
+
+%%% Style of code.
+% Accessible font families: https://tex.stackexchange.com/questions/378623/how-can-i-get-a-list-of-all-fontfamily-fontseries-combinations/378626#378626
+\lstdefinestyle{mycodestyle}{
+  basicstyle=\ttfamily\footnotesize,
+  % basicstyle=\fontfamily{ccr}\selectfont\footnotesize,  % with bold, but == displays incorrectly
+  backgroundcolor=\color{codebackcolour},
+  commentstyle=\color{codegreen}\bfseries,
+  stringstyle=\color{codepurple},
+  % keywordstyle=\color{magenta}\bfseries,
+  keywordstyle=\color{blue}\bfseries,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  keepspaces=true,
+  numbers=left, % =none to disable line numeration
+  numbersep=5pt,
+  numberstyle=\tiny\color{codegray},
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  tabsize=2,
+  frame=single,
+  texcl=true, % russian comments
+}
+
+\lstdefinestyle{cppcodestyle}{
+  style=mycodestyle,
+  language=C++,
+}
+
+% \lstdefinestyle{cppcodestyle}{
+%     language=C++,
+%     basicstyle=\fontfamily{cmr}\selectfont\footnotesize\color{cppidentifiercolor},
+%     backgroundcolor=\color{white},
+%     identifierstyle=\color{cppidentifiercolor},
+%     commentstyle=\color{cppcommentcolor}\bfseries,
+%     stringstyle=\color{cppstringcolor},
+%     keywordstyle=\color{cppkeywordcolor}\bfseries,
+%     breakatwhitespace=false,
+%     breaklines=true,
+%     captionpos=b,
+%     keepspaces=true,
+%     numbers=left, % =none to disable line numeration
+%     numbersep=5pt,
+%     numberstyle=\tiny\color{codegray},
+%     showspaces=false,
+%     showstringspaces=false,
+%     showtabs=false,
+%     tabsize=2,
+%     frame=single,
+%     texcl=true, % russian comments
+% }
+
+% \lstset{style=mycodestyle}
+\lstset{style=cppcodestyle}
+\lstset{upquote=true}   % using quotes for strings
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Комментарии и замечания.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%% package "todonotes". %%%%%%%%%%
+
+%%% Good documentation is available for package "todonotes".
+
+\newlength{\nopartodostrlen}
+
+\newcommandx{\nopartodo}[2][1=]{
+  \settowidth{\nopartodostrlen}{{#2}}
+  \setlength{\nopartodostrlen}{\nopartodostrlen + 18pt}
+  \todo[list, fancyline, inline, noinlinepar, inlinewidth=\nopartodostrlen]{{#2}}
+  \ % space for better view
+}
+
+\newcommandx{\partodo}[2][1=]{
+  \todo[list, fancyline, inline, inlinepar]{{#2}}
+}
+
+\newcommandx{\boxtodo}[2][1=]{\todo[list, fancyline, noinline]{{#2}}}
+
+%%% uncomment to disable comments:
+% \renewcommandx{\nopartodo}[2][1=]{\todo[disable, {#1}]{{#2}}}
+% \renewcommandx{\partodo}[2][1=]{\todo[disable, {#1}]{{#2}}}
+% \renewcommandx{\boxtodo}[2][1=]{\todo[disable, {#1}]{{#2}}}
+
+%%% Another parameters (more in docs)
+% caption={Caption text} -- name of todo in the list of todos
+% prepend/noprepend -- whether to add caption in the todo text
+% inlinewidth=5cm -- width of box
+% disable -- disable comment
+
+%%%%%%%%%% colorised comment %%%%%%%%%%
+
+\definecolor{commentcolor}{RGB}{255, 136, 0}
+% \def\comment#1{{\color{myorange}#1}}
+\renewcommand{\comment}[1]{
+  {\bfseries\color{commentcolor}{#1}}
+}
+
+%%%% For draft version.
+\ifdraft
+\else
+  \renewcommand{\comment}[1]{}
+  \renewcommandx{\nopartodo}[2][1=]{\todo[disable, {#1}]{{#2}}}
+  \renewcommandx{\partodo}[2][1=]{\todo[disable, {#1}]{{#2}}}
+  \renewcommandx{\boxtodo}[2][1=]{\todo[disable, {#1}]{{#2}}}
+\fi
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Dates
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%% Last modified time %%%%%%%%%%
+
+% https://tex.stackexchange.com/questions/137184/how-to-specify-a-date-and-then-use-it-with-a-time-format-defined-using-the-packa
+
+\newdateformat{lastUpdatedDateFormat}{\monthnameenglish[\THEMONTH] \THEYEAR}
+% \newdateformat{lastUpdatedDateFormat}{\monthnameenglish[\THEMONTH]\ \THEDAY,\ \THEYEAR}
+
+\newcommand{\displayLastUpdatedDate}[1]{
+  \textit{Last updated in \lastUpdatedDateFormat\displaydate{#1}}
+}
+
+\newcommand{\displayAutoLastUpdatedDate}{
+  \textit{Last updated in \lastUpdatedDateFormat\today}
+}
+
+\newcommand{\displayUpperRight}[1]{% \placetextbox{<horizontal pos>}{<vertical pos>}{<stuff>}
+  \AddToShipoutPictureFG*{% Add <stuff> to current page foreground
+    \put(
+    \LenToUnit{\paperwidth-2 cm-0.2 cm+0.05cm},
+    \LenToUnit{\paperheight-1.0 cm}
+    ){\vtop{{\null}\makebox[0pt][c]{
+          \small\color{gray}{#1}
+          \hspace{\widthof{#1}}}
+      }}}%
+}%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Tikzpicture
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%% Example %%%%%%%%%%
+
+%-------------%
+% \begin{tikzpicture}[node distance=2cm]
+
+% \node (ClientApp) [rect] {\shortstack{Client app \\ \\ frontend}};
+% \node (Server) [rect, right of=ClientApp, xshift=5cm] {Your phisical or virtual server};
+
+% \draw [arrow] (ClientApp) -- (Server);
+
+% \end{tikzpicture}
+%------------%
+
+%%%%%%%%%% Onine graphical editor %%%%%%%%%%
+
+% tikzmaker: https://tikzmaker.com/editor
+% stackoverflow: https://tex.stackexchange.com/questions/84890/is-there-an-online-diagram-graphical-editor-that-produces-the-corresponding-late

@@ -1,0 +1,50 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Page geometry, headers and footers.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% bounds of text on page
+\geometry{
+  inner=15mm,             % == left if "documentclass" has "oneside"
+  outer=15mm,             % == right if "documentclass" has "oneside"
+  top=20mm,
+  bottom=20mm,
+  % marginparsep=4mm,       % for "todonotes" package
+  % marginparwidth=30mm,    % for "todonotes" package
+  % showframe,              % uncomment to see frame lines
+}
+
+\setlength{\marginparwidth}{2cm}    % to suppress warning from package "todonotes"
+
+%%% more information: https://www.overleaf.com/learn/latex/Articles/How_to_change_paragraph_spacing_in_LaTeX#Commands_used_for_paragraph_spacing
+%%% These parameters are set in "Custom.tex" in "enumeration" section!!!
+% \linespread{1.3}                  % spaces between lines
+% \setlength{\parindent}{20pt}      % indentation of first line of the paragraph
+% \setlength{\parskip}{12pt}        % space between paragraphs
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%% First page style
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \newpagestyle{main_first_page}{
+%   \setfoot{}{\thepage}{}
+% }
+
+% \newcommand{\SetTitlePageSettings}{
+% \thispagestyle{main_first_page}
+% \vrule height 0mm \vspace{20mm} % change \vspace to adjust vertical indent
+% }
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%% Main page style
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpagestyle{default_page_style}{
+  \setheadrule{0.4pt}    % line below the header
+  \sethead{ФПМИ МФТИ 2025-2026}{}{\hyperlink{table-of-contents}{\;Назад к содержанию}}
+  % \setfootrule{0.4pt}    % line above the header
+  \setfoot{}{\thepage}{}
+}
+
+% \pagestyle{default_page_style}
+

@@ -1,0 +1,65 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% To reuse that document:
+% 1) Change Source/TitlePage.tex
+% 2) Change Headings/Geometry.tex (headers and footers)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper, 14pt, oneside]{extarticle}  % "extarticle" instead "article" to use 14pt font
+
+\input{Headings/Packages}
+%%%%%%%%%% Hack, чтобы не удалять комментарии. %%%%%%%%%%
+\newif\ifdraft
+% \drafttrue
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{Headings/Shortcuts}
+\input{Headings/Geometry}
+\input{Headings/TheoremStyles}
+\input{Headings/Misc}
+% \input{Headings/Custom}
+
+\begin{document}
+
+%%%% Title page.
+\input{Source/TitlePage}
+\clearpage
+
+%%%% Table of content.
+\setcounter{page}{2}
+\tocloftpagestyle{default_page_style}
+\hypertarget{table-of-contents}{}
+\tableofcontents
+\pagestyle{default_page_style}
+\clearpage
+
+%%%% Materials/
+\include{Source/ForNewcomers/ForNewcomers}
+\include{Source/Infrastructure/Infrastructure}
+% \include{Source/ForOperator/ForOperator}
+% \include{Source/ForVideoEditor/ForVideoEditor}
+\include{Source/CloudStorage/CloudStorage}
+\include{Source/InstitutionCamera/InstitutionCamera}
+\include{Source/LectoryEquipment/LectoryEquipment}
+\include{Source/PortableCamera/PortableCamera}
+% \include{Source/ResponsibleForEquipmentGuide/ResponsibleForEquipmentGuide}
+% \include{Source/EditThisDocumentGuide/EditThisDocumentGuide}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section{Сцены и профили OBS (скорее всего перенести в obs)}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section{Стрим занятий на YouTube-канал}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section{Запись zoom через obs (для институтских установок)}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section{Запись онлайн-лекции}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section{OBS на ubuntu}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

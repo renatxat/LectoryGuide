@@ -1,0 +1,301 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Handy information.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% def and newcommand difference: https://tex.stackexchange.com/questions/655/what-is-the-difference-between-def-and-newcommand
+
+% ctrl + b -- \textbf{}
+% ctrl + i -- \textit{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Braces commands.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\pars}[1]{\left({#1}\right)}            % autosizable ()
+\newcommand{\abs}[1]{\left|{#1}\right|}                 % autosizable ||
+\newcommand{\norm}[1]{\left\|{#1}\right\|}              % autosizable \|\|
+\newcommand{\set}[1]{\left\{{#1}\right\}}               % autosizable {}
+\newcommand{\angles}[1]{\left\langle{#1}\right\rangle}    % autosizable <>
+\newcommand{\condset}[2]{\set{{#1} \ | \ {#2}}}             % autosizable set definition
+% \newcommand{\la}{\langle}
+% \newcommand{\ra}{\rangle}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Calligraphyc letters (cal == calligraphyc).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cQ}{\mathcal{Q}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\cY}{\mathcal{Y}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Letters for numeric sets (blackboard bold letter).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\emptyset}{\varnothing}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\DD}{\mathbb{D}}
+\newcommand{\EE}{\mathbb{E}}
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\II}{\mathbb{I}}
+% \newcommand{\SS}{\mathbb{S}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Greek letters.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\phi}{\varphi}
+\renewcommand{\kappa}{\varkappa}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\lm}{\lambda}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Statements.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \newcommand{\Paragraph}[1]{\section{Пункт {#1}}}
+\newcommand{\Def}{\textbf{Def.} }
+\newcommand{\Th}{\textbf{Теорема.} }
+\newcommand{\Thbd}{\textbf{Теорема (б/д).} }
+\newcommand{\Theor}[1]{\textbf{Теорема ({#1})}.}
+\newcommand{\Theorbd}[1]{\textbf{Теорема ({#1}) (б/д)}.}
+\newcommand{\Consequence}{\textbf{Следствие.} }
+\newcommand{\Remind}{\textbf{Remind.} }
+\newcommand{\Note}{\textbf{Note.} }
+\newcommand{\Statement}{\textbf{Утверждение.} }
+\newcommand{\Exercise}{\textbf{Упражнение.} }
+\newcommand{\Prop}{\textbf{Свойство.} }
+\newcommand{\Proof}{\textbf{Доказательство:} }
+\newcommand{\Prooff}{\textbf{Доказать:} }
+\newcommand{\Solution}{\textbf{Решение.} }
+\newcommand{\Alg}{\textbf{Algorithm.} }
+\newcommand{\Lemma}{\textbf{Лемма.} }
+\newcommand{\Lemm}[1]{\textbf{Лемма ({#1})}.}
+\newcommand{\Example}{\textbf{Пример:} }
+\newcommand{\Task}{\textbf{Задача.} }
+\newcommand{\Solve}{\textbf{Решение:} }
+\newcommand{\Answer}{\textbf{Ответ:} }
+\newcommand{\Examples}{\textbf{Примеры.} }
+\newcommand{\Ex}{\textbf{Упражнение.} }
+\newcommand{\Question}{\textbf{Вопрос:} }
+\newcommand{\Sense}{\textbf{Смысл:} }
+\newcommand{\Endproof}{$\hfill\blacksquare$ }
+
+\let\bs\backslash
+\let\tbs\textbackslash
+
+\let\ra\rightarrow
+\let\Ra\Rightarrow
+\newcommand{\Lgra}{\quad\Longrightarrow\quad}
+
+\let\la\leftarrow
+\let\La\Leftarrow
+\newcommand{\Lgla}{\quad\Longleftarrow\quad}
+
+\let\lra\leftrightarrow
+\let\Lra\Leftrightarrow
+\newcommand{\Lglra}{\quad\Longleftrightarrow\quad}
+
+\let\rra\rightrightarrows
+\let\hra\hookrightarrow
+
+\let\wdt\widetilde
+\let\wdh\widehat
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Inequalities (Russian style).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\le}{\leqslant}
+\renewcommand{\ge}{\geqslant}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%---------------------------------------------------------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Common.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\deriv}[2]{\frac{\partial {#1}}{\partial {#2}}}
+
+\DeclareMathOperator*{\argmax}{arg\,max} % * allows display limits under argmax
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\newcommand{\sumlim}[2]{\sum\limits_{{#1}}^{{#2}}}
+\newcommand{\prodlim}[2]{\prod\limits_{{#1}}^{{#2}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Mathematical statistics.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareMathOperator{\E}{\mathbb{E}}
+\DeclareMathOperator{\D}{\mathbb{D}}
+\newcommand{\Xmean}{\overline{X}}
+\newcommand{\Ymean}{\overline{Y}}
+\newcommand{\samp}[2]{{#1}_1, \ldots, {#1}_{#2}}
+\newcommand{\observation}{X = (\samp{X}{n})}
+\newcommand{\distrfamily}{\condset{P_\theta}{\theta \in \Theta}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Linear algebra.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareMathOperator{\re}{Re}   % Real part of complex value.
+\DeclareMathOperator{\im}{Im}   % Imaginary part of complex value.
+\DeclareMathOperator{\imm}{Im}  % Image of a function.
+\DeclareMathOperator{\kerr}{Ker}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\tr}{Tr}
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\proj}{proj}
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\rank}{rank}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Calculations complexity.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \mathsf{} - name of class
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Matrices.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Блочная матрица
+\newcommand{\blockmatrix}[9]{
+  \draw[draw=#4,fill=#5] (0,0) rectangle( #1,#2);
+  \ifthenelse{\equal{#6}{true}}
+  {
+    \draw[draw=#7,fill=#8] (0,#2) -- (#9,#2) -- ( #1,#9) -- ( #1,0) -- ( #1 - #9,0) -- (0,#2 -#9) -- cycle;
+  }
+  {}
+  \draw ( #1/2, #2/2) node { #3};
+}
+
+% Правая скобка произвольного размера
+% \rightparen{width}
+\newcommand{\rightparen}[1]{
+  \begin{tikzpicture}
+    \draw (0,#1/2) arc (0:30:#1);
+    \draw (0,#1/2) arc (0:-30:#1);
+  \end{tikzpicture}%this comment is necessary
+}
+
+% Левая скобка произвольного размера
+% \leftparen{width}
+\newcommand{\leftparen}[1]{
+  \begin{tikzpicture}
+    \draw (0,#1/2) arc (180:150:#1);
+    \draw (0,#1/2) arc (180:210:#1);
+  \end{tikzpicture}%this comment is necessary
+}
+
+% Unframed block matrix, "m" prefix to match fbox, mbox
+% \blockmatrix[r,g,b]{width}{height}{text}
+\newcommand{\mblockmatrix}[4][none]{
+  \begin{tikzpicture}
+    \ifthenelse{\equal{#1}{none}}
+    {
+      \blockmatrix{#2}{#3}{#4}{none}{none}{false}{none}{none}{0.0}
+    }
+    {
+      \definecolor{fillcolor}{rgb}{#1}
+      \blockmatrix{#2}{#3}{#4}{none}{fillcolor}{false}{none}{none}{0.0}
+    }
+  \end{tikzpicture}%this comment is necessary
+}
+
+% Framed block matrix
+% \fblockmatrix[r,g,b]{width}{height}{text}
+\newcommand{\fblockmatrix}[4][none]{
+  \begin{tikzpicture}
+    \ifthenelse{\equal{#1}{none}}
+    {
+      \blockmatrix{#2}{#3}{#4}{black}{none}{false}{none}{none}{0.0}
+    }
+    {
+      \definecolor{fillcolor}{rgb}{#1}
+      \blockmatrix{#2}{#3}{#4}{black}{fillcolor}{false}{none}{none}{0.0}
+    }
+  \end{tikzpicture}%this comment is necessary
+}
+
+% Diagonal block matrix
+% \dblockmatrix[r,g,b]{width}{height}{text}
+\newcommand{\dblockmatrix}[4][none]{
+  \begin{tikzpicture}
+    \ifthenelse{\equal{#1}{none}}
+    {
+      \blockmatrix{#2}{#3}{#4}{black}{none}{true}{black}{none}{0.35cm}
+    }
+    {
+      \definecolor{fillcolor}{rgb}{#1}
+      \blockmatrix{#2}{#3}{#4}{black}{none}{true}{black}{fillcolor}{0.35cm}
+    }
+  \end{tikzpicture}%this comment is necessary
+}
+
+
+% Diagonal block matrix, but exposes diagonal offset
+% \diagonalblockmatrix[r,g,b]{width}{height}{text}
+\newcommand{\diagonalblockmatrix}[5][none]{
+  \begin{tikzpicture}
+
+    \ifthenelse{\equal{#1}{none}}
+    {
+      \blockmatrix{#2}{#3}{#4}{black}{none}{true}{black}{none}{#5}
+    }
+    {
+      \definecolor{fillcolor}{rgb}{#1}
+      \blockmatrix{#2}{#3}{#4}{black}{none}{true}{black}{fillcolor}{#5}
+    }
+
+  \end{tikzpicture}%necessary comment
+}
+
+\newcommand{\valignbox}[1]{
+  \vtop{\null\hbox{#1}}% necessary comment
+}
+
+% a hack so that I don't have to worry about the number of columns or
+% spaces between columns in the tabular environment
+\newenvironment{blockmatrixtabular}
+{% necessary comment
+  \begin{tabular}{
+    @{}l@{}l@{}l@{}l@{}l@{}l@{}l@{}l@{}l@{}l@{}l@{}l@{}l@{}l@{}l@{}l@{}l@{}l@{}l
+    @{}l@{}l@{}l@{}l@{}l@{}l@{}l@{}l@{}l@{}l@{}l@{}l@{}l@{}l@{}l@{}l@{}l@{}l@{}l
+    @{}l@{}l@{}l@{}l@{}l@{}l@{}l@{}l@{}l@{}l@{}l@{}l@{}l@{}l@{}l@{}l@{}l@{}l@{}l
+    @{}
+    }
+    }
+    {
+  \end{tabular}%necessary comment
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Other
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\pmitem}[1]{<<\textsf{{#1}}>>}   % to emphasize menu items
+\newcommand{\bmitem}[1]{\textbf{\textsf{{#1}}}}   % to emphasize menu items
+\newcommand{\mitem}[1]{\textsf{{#1}}}   % to emphasize menu items
+\newcommand{\textbfit}[1]{\textbf{\textit{{#1}}}}
+
+\newcommand{\caret}{$^\wedge$} % circumflex/hat

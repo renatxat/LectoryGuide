@@ -1,0 +1,305 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Page format
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \usepackage[14pt]{extsizes}         % enables more font size (use extarticle instead)
+\usepackage{geometry}               % geometry of page
+\usepackage{setspace}               % spacing between paragraphs
+% \usepackage{multicol}               % for text in several columns (for articles)
+% \usepackage{soulutf8}               % Модификаторы начертания
+\usepackage{indentfirst}            % make indent of first paragraph in section
+\usepackage[strict]{changepage}     % for 'adjustwidth' environment
+% \usepackage{titleps}                % колонтитулы
+\usepackage[pagestyles]{titlesec}   % sections' parameters
+%%% More:
+% sections: https://ru.overleaf.com/learn/latex/Sections_and_chapters#Customize_chapters_and_sections
+% titleformat{} and titleformat*{}: https://tex.stackexchange.com/a/476727/329405
+% Invalid margin is the bug of 'titlesec' package. [frame] solves the problem but has a strange design
+\titleformat*{\section}{\LARGE\bfseries}
+% \titleformat{\section}{\LARGE\bfseries}{Section~\thesection.}{.2em}{}
+\titleformat*{\subsection}{\Large\bfseries}
+\titleformat*{\subsubsection}{\large\bfseries}
+% \titleformat{\subsubsection}[frame]{\large\bfseries}{\S~\thesubsubsection~}{.4em}{}   % extraordinary design
+% \titleformat{\subsubsection}{\large\bfseries}{\S~\thesubsubsection~}{.4em}{}
+% \titlelabel{\thetitle.\quad}        % text before title of section/subsection/...
+
+% \usepackage{titleps}                % колонтитулы, не совместим с пакетом "titlesec"
+\usepackage[normalem]{ulem}
+\usepackage{interval}
+
+\usepackage{lscape}     % for "\begin{landscape}" (landscape page)
+\usepackage{rotating}   % rotating text, pictures and tables on the page (e.g. "\begin{sideways}", "\begin{turn}{45}", "\begin{sidewaysfigure}[htbp]", "\begin{sidewaystable}[htpb]")
+%%% More: https://latex-tutorial.com/landscape-page/
+
+\usepackage[perpage]{footmisc}  % to reset footnote counter on each page.
+
+\usepackage{xargs}      % use more than one optional parameter in new commands
+\usepackage[colorinlistoftodos,prependcaption,textsize=normalsize]{todonotes}     % for comments
+% \usepackage{calc}       % for package "todonotes"
+
+\usepackage{lipsum} % dummy texts for test. Usage: \lipsum[1-4] (prints 4 paragraphs)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Counters
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% The sectioning levels have the following numbers:
+%%% -1 part
+%%% 0 chapter % in article it is 'part'
+%%% 1 section
+%%% 2 subsection
+%%% 3 subsubsection
+%%% 4 paragraph
+%%% 5 subparagraph
+
+%%%% toc - table of content
+% \setcounter{tocdepth}{2} % + subsections
+% \setcounter{tocdepth}{3} % + subsubsections
+\setcounter{tocdepth}{4} % + paragraphs
+% \setcounter{tocdepth}{5} % + subparagraphs
+
+
+\setcounter{secnumdepth}{3}     % sec - sections. {0} -- disable section numeration
+% \setcounter{section}{-1}        % numeration from 0
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Language of document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{iftex}            % \iftutex
+\usepackage{cmap}					    % enable search in PDF
+
+
+% Handle special symbols. May be undefined when LuaTex is used.
+\iftutex % to detect if Unicode-aware engine (LuaTeX or XeTeX) is used
+
+\usepackage{fontspec}
+\usepackage{unicode-math} % loads 'fontspec' automatically
+% \setmainfont{Noto Serif}
+% \setsansfont{Noto Sans}
+% \setmonofont{Noto Sans Mono}
+
+\usepackage[babelshorthands=true]{polyglossia}
+\let\lang\relax\let\endlang\relax % avoid conflict with complexity.sty
+
+\setdefaultlanguage{russian}
+\setotherlanguage{english}
+
+\defaultfontfeatures{Ligatures=TeX}
+
+\setmainfont{Times New Roman}
+\setsansfont{Arial}
+\setmonofont[Contextuals=Alternate]{Fira Code}
+
+\newfontfamily\cyrillicfont{Times New Roman}
+\newfontfamily\cyrillicfontsf{Arial}
+\newfontfamily\cyrillicfonttt[Contextuals=Alternate]{Fira Code}
+
+\newfontfamily\englishfont{Times New Roman}
+\newfontfamily\englishfontsf{Arial}
+\newfontfamily\englishfonttt[Contextuals=Alternate]{Fira Code}
+
+\else
+
+\usepackage[T2A]{fontenc}			    % encoding of pdf (old 8-bit technologies)
+\input{glyphtounicode}
+\input{glyphtounicode-cmr} %from pdfx package
+\pdfgentounicode=1
+
+\fi
+
+\usepackage[utf8]{inputenc}             % encoding of sources (.tex files)
+\usepackage{csquotes}                   % for bable + bibletex (\enquote + \textquote)
+\usepackage{hyphsubst}                % suppress "No hyphenation patterns were preloaded for"
+\usepackage[english, russian]{babel}	% localisation + word breaks
+\usepackage{tempora} % this supports Cyrillic for russian
+% \frenchspacing                          % enables equal spacing between sentences and words
+% \usepackage{courier}                    % modern font family
+
+%%% Hyphenation: https://tex.stackexchange.com/questions/550978/hyphenrules-no-longer-defined-in-polyglossia
+% \usepackage{polyglossia}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Table of content
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{tocloft}
+% \usepackage[titletoc]{appendix}
+% \usepackage[dotinlabels]{titletoc}
+
+% \renewcommand{\contentsname}{Оглавление}
+% \renewcommand{\appendixtocname}{Приложения}
+
+% \renewcommand{\cftpartleader}{\cftdotfill{\cftdotsep}}
+
+%\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+% \renewcommand{\appendixtocname}{Приложения}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Enumerate and itemize
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{enumerate}
+\usepackage{enumitem}   % управляет тем, как выглядит нумерованный список (внутри окружения enumerate можно использовать счётчики enumi, enumii, enumiii, ...)
+\usepackage{pifont}     % more styles for bullets
+
+%% Settings are in Custom.tex
+
+% %%% Enumerate
+% \setenumerate[1]{label=\arabic*), fullwidth, itemindent=\labelsep + \labelwidth + \leftmargin,
+%   listparindent=\parindent,  leftmargin=0.5\parindent, topsep=0pt}
+% \setenumerate[2]{label=\arabic{enumi}.\arabic*), fullwidth, itemindent=0.5\parindent,
+%   listparindent=\parindent, leftmargin=0.5\parindent, topsep=0pt}
+% \setenumerate[3]{label=\Alph*), fullwidth, itemindent=0.5\parindent,
+%   listparindent=\parindent, leftmargin=0.5\parindent, topsep=0pt}
+% \setenumerate[4]{label=\Roman*), fullwidth, itemindent=0.5\parindent,
+%   listparindent=\parindent, leftmargin=0.5\parindent, topsep=0pt}
+
+% %%% Itemize
+% %%% More items: https://latex-tutorial.com/bullet-styles/
+% \setitemize[1]{label=$\blacksquare$, fullwidth, itemindent=0.5\parindent,
+%   listparindent=\parindent,  leftmargin=0.5\parindent, topsep=0pt}
+% \setitemize[2]{label=\ding{117}, fullwidth, itemindent=0.5\parindent,
+%   listparindent=\parindent, leftmargin=0.5\parindent, topsep=0pt}
+% \setitemize[3]{label=$\bullet$, fullwidth, itemindent=0.5\parindent,
+%   listparindent=\parindent, leftmargin=0.5\parindent, topsep=0pt}
+% \setitemize[4]{label=*, fullwidth, itemindent=0.5\parindent,
+%   listparindent=\parindent, leftmargin=0.5\parindent, topsep=0pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Tables
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{array,tabularx,tabulary,booktabs} % tables
+\usepackage{longtable}                        % long tables
+\usepackage{multirow}                         % merging rows inside tables
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Math
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[intlimits]{amsmath}
+\usepackage{amsthm}             % for theorems' environments
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathrsfs}           % example: $\mathscr F$
+\usepackage{mathtools}
+% \usepackage[usenames]{color}  % \usepackage[table]{xcolor}
+\usepackage{xcolor}
+\usepackage{esint}
+\usepackage{bm}                 % \bm{} for bold math symbols
+\usepackage{bbm}
+\usepackage{dsfont}
+\usepackage{seqsplit}           % for line wrap ups
+\usepackage{makecell}
+\usepackage{{./Headings/Style/slashbox}}
+\usepackage{xfrac}
+\usepackage{easybmat}           % block matrices (\BMAT).
+\usepackage{accents}            % math accents (\star{}, \diamond{}, \undertilde{}, ...)
+
+\numberwithin{equation}{section}        % Нумерация вида (номер_секции).(номер_уравнения)
+% \counterwithin{equation}{section}       % ????????????????
+\mathtoolsset{showonlyrefs=false}       % Номера только у формул с \eqref{} в тексте.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% References
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{varioref} % vref
+\usepackage{hyperref}
+\usepackage{cleveref} % cref
+
+\usepackage{url}
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Bibliography
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[backend=biber]{biblatex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Pictures and images
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{graphicx, epsfig}     % images
+% \usepackage[final]{graphicx, epsfig}
+\graphicspath{{./Images/}} % relative (to main.tex) path of images
+% \graphicspath{Images/} -- relative to file containing the \includegraphics command
+\usepackage{pgfplots}
+\usetikzlibrary{arrows}
+\usetikzlibrary{arrows.meta}
+\pgfplotsset{width=10cm,compat=newest}
+\pgfkeys{/pgf/trig format=rad}
+
+\usepackage{subcaption}
+\usepackage{caption}
+% \captionsetup[figure]{labelsep = period}
+
+% \usepackage{watermark}
+%\thiswatermark{\put(-100,-550){\includegraphics[scale=0.8]{images/guk.jpg}} }
+
+\usepackage[most]{tcolorbox}
+\definecolor{block-gray}{gray}{0.85}
+\newtcolorbox{myquote}{colback=block-gray,grow to right by=-0mm,grow to left by=-0mm,
+  boxrule=0pt,boxsep=0pt,breakable}
+
+\usepackage{wrapfig}            % для плавающих объектов (изображений, таблиц)
+\usepackage[export]{adjustbox}  % "fbox" and "frame" -- border around the image
+\setlength\fboxsep{3pt}         % Отступ рамки \fbox{} от рисунка
+\setlength\fboxrule{1pt}        % Толщина линий рамки \fbox{}
+
+% param to make pictures with width==\textwidth
+\newlength{\fboxaddlen}
+\setlength{\fboxaddlen}{2\fboxsep + 2\fboxrule}
+
+%%% Графика
+\usepackage{tikz}        % Графический пакет tikz
+% \usepackage{tikz-cd}     % Коммутативные диаграммы
+% \usepackage{tkz-euclide} % Геометрия
+% \usepackage{stackengine} % Многострочные тексты в картинках
+% \usetikzlibrary{angles, babel, quotes}
+% \usetikzlibrary{backgrounds,automata}
+
+% https://www.overleaf.com/learn/latex/LaTeX_Graphics_using_TikZ%3A_A_Tutorial_for_Beginners_(Part_3)%E2%80%94Creating_Flowcharts
+% Also see "tikzpicture" example in "Custom.tex"
+\usetikzlibrary{shapes.geometric, arrows}
+\tikzstyle{rect} = [rectangle,
+rounded corners,
+minimum width=3cm,
+minimum height=1cm,
+text centered,
+draw=black,
+fill=white]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\usepackage{circuitikz} % online graphical editor tikzmaker: https://tikzmaker.com/editor
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Algorithms and code
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{algorithm}
+\makeatletter
+\renewcommand{\ALG@name}{Алгоритм}
+\makeatother
+\usepackage{algpseudocode}
+\renewcommand{\algorithmicrequire}{\textbf{Вход:}}
+\renewcommand{\algorithmicensure}{\textbf{Выход:}}
+
+\usepackage{listings}   % code sections
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Other
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{datetime}   % last modified time
+\usepackage{wasysym}    % additional glyphs
+\usepackage{verbatim}   % "\begin{verbatim}" -- for monospaced font
+\usepackage{ifthen}     % \ifthenelse, \whiledo
+
+\allowdisplaybreaks
