@@ -59,7 +59,7 @@
   \end{minipage}
 \end{center}
 
-Выбираем \mitem{Больше вариантов} \ $\ra$ \ \mitem{Использовать другую учётную запись} (если есть такое поле) и ставим флажок \mitem{Запомнить учётные данные}. Вводим данные от вашей учётки owncloud (либо от \hyperlink{lectory-operator-profile}{учётки оператора}, если вы подключаете диск на ПК в аудитории).
+Выбираем \mitem{Больше вариантов} \ $\ra$ \ \mitem{Использовать другую учётную запись} (если есть такое поле) и ставим флажок \mitem{Запомнить учётные данные}. Вводим данные от \hyperlink{lectory-operator-profile}{учётки оператора}.
 
 \begin{center}
   \begin{minipage}[c]{0.7\textwidth}
@@ -80,7 +80,7 @@
 
 Чтобы привязать диск, мы будем пользоваться командой \texttt{mount}. \href{https://losst.pro/montirovanie-diska-v-linux}{Тут} можно прочитать про саму команду и её параметры, а \href{https://ubuntuforums.org/showthread.php?t=288534}{тут} --- как настроить подключение по cifs (smb) протоколу, чтобы диск не удалялся после перезагрузки компьютера (раздел \mitem{Permanent mount}).
 
-Краткая инструкция, как примаунтить диск с аккаунтом \mitem{lectory-operator}:
+Краткая инструкция, как примаунтить диск:
 \begin{enumerate}
   \item Переключаемся в режим рута:
         \begin{tcolorbox}
@@ -97,7 +97,7 @@
           \texttt{touch .smb\_operator\_credentials}
         \end{tcolorbox}
 
-  \item Прописываем там данные от учётки. В случае учётки оператора:
+  \item Прописываем там данные от учётки оператора:
         \begin{tcolorbox}
           \texttt{username=lectory-operator} \\
           \texttt{password=\_Учение-Свет\_}
@@ -158,7 +158,7 @@
   \end{minipage}
 \end{center}
 
-После этого поставить флаг \mitem{Redistered User}, ввести ваш логин и пароль от owncloud. Флаг \mitem{Remember forever} позволит вам в будущем пропускать процесс ввода логина-пароля, но подключать диск после перезагрузки ПК всё равно придётся.
+После этого поставить флаг \mitem{Redistered User}, ввести логин и пароль от owncloud. Флаг \mitem{Remember forever} позволит вам в будущем пропускать процесс ввода логина-пароля, но подключать диск после перезагрузки ПК всё равно придётся.
 
 \begin{center}
   \begin{minipage}[c]{\textwidth - \fboxaddlen}
